@@ -33,7 +33,7 @@ with Diagram(
         with Cluster("vpc"):
             igw_gateway = VirtualNetworkGateways("igw")
     
-            with Cluster("Availability Zone: eu-north-1a \n\n  "):
+            with Cluster("Availability Zone: xxx \n\n  "):
                 # Subcluster 
                 with Cluster("subnet_public1"):
                      ec2_tfe_server = VMLinux("TFE_server")
