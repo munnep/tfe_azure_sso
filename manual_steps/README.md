@@ -119,4 +119,58 @@ bash ./install.sh no-proxy private-address=10.233.1.4 public-address=52.233.240.
 - Loadbalancer in azure is called a application gateway
 https://medium.com/@t.tak/build-https-support-load-balancer-on-azure-81e111e58d98
 
-![](media/20221108120959.png)  
+Application gateway requires extra ports to be opened
+![](media/20221119094144.png)    
+
+![](media/20221119094209.png)    
+![](media/20221119094236.png)    
+![](media/20221119094350.png)    
+![](media/20221119094403.png)    
+![](media/20221119094952.png)    
+![](media/20221119095103.png)    
+![](media/20221119095123.png)    
+![](media/20221119095242.png)    
+![](media/20221119095308.png)    
+![](media/20221119095326.png)    
+Er moet ook een correct health probe worden gemaakt    
+
+![](media/20221119134143.png)  
+![](media/20221119134214.png)    
+
+On the machine execute the following
+
+```
+sudo systemctl stop apparmor
+sudo systemctl disable apparmor
+
+pushd /var/tmp
+curl -o install.sh https://install.terraform.io/ptfe/stable
+bash ./install.sh no-proxy private-address=10.233.11.4
+```
+
+
+
+
+
+
+
+
+
+
+
+certificates uit key vault
+
+// pem to pfx - also password
+openssl pkcs12 -export -out certificate.pfx -inkey private_key_pem -in server.crt
+
+
+
+
+
+
+
+
+
+
+// pem to cer
+openssl x509 -inform PEM -in fullchain.pem -outform DER -out certificate.cer
