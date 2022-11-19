@@ -30,11 +30,11 @@ The repo assumes you have no certificates and want to create them using Let's En
 
 - Clone the repository to your local machine
 ```sh
-git clone https://github.com/munnep/tfe_aws_agents.git
+git clone https://github.com/munnep/tfe_azure_sso.git
 ```
 - Go to the directory  
 ```sh
-cd tfe_aws_agents
+cd tfe_azure_sso
 ```
 - Set your Azure credentials
 ```
@@ -58,7 +58,6 @@ cd tfe_aws_agents
       - [] install TFE
 - [] Create a valid certificate to use 
 - [] point dns name to public ip address
-- [] create an auto scaling group with agents
 - [] install TFE
 
 # DONE
