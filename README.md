@@ -34,7 +34,7 @@ git clone https://github.com/munnep/tfe_azure_sso.git
 ```
 - Go to the directory  
 ```sh
-cd tfe_aws_agents
+cd tfe_azure_sso
 ```
 - Set your Azure credentials
 ```
