@@ -7,11 +7,12 @@ from diagrams.azure.compute import VM,VMLinux
 from diagrams.azure.database import DatabaseForPostgresqlServers
 from diagrams.azure.storage import BlobStorage
 from diagrams.azure.identity import ActiveDirectory
+from diagrams.azure.network import ApplicationGateway
 
 
 
 # Variables
-title = "VPC with 1 public subnet for the TFE server and 1 private subnet for PostgreSQL instance requirement."
+title = "VPC with 2 public subnet for the bastion client and application gateway \ and 2 private subnet for TFE and PostgreSQL instance requirement."
 outformat = "png"
 filename = "diagram_tfe_azure_sso"
 direction = "TB"
@@ -27,31 +28,29 @@ with Diagram(
     user = Server("user")
 
     # Cluster 
-    with Cluster("aws"):
+    with Cluster("Azure"):
         bucket_tfe = BlobStorage("TFE bucket")
-        bucket_files = BlobStorage("TFE airgap files")
         with Cluster("vpc"):
-            igw_gateway = VirtualNetworkGateways("igw")
     
             with Cluster("Availability Zone: xxx \n\n  "):
                 # Subcluster 
                 with Cluster("subnet_public1"):
-                     ec2_tfe_server = VMLinux("TFE_server")
-                   # Subcluster
+                    ApplicationGateway = ApplicationGateway("ApplicationGateway")
+                with Cluster("subnet_public2"):
+                    ec2_bastion = VMLinux("bastion")
                 with Cluster("subnet_private1"):
-                    with Cluster("DB subnet"):
-                        postgresql = DatabaseForPostgresqlServers("RDS Instance")
+                     ec2_tfe_server = VMLinux("TFE_server")
+                with Cluster("subnet_private2"):     
+                     postgresql = DatabaseForPostgresqlServers("RDS Instance")
 
     # Diagram
 
-    user >> bucket_files 
+    user >> ec2_bastion >> ec2_tfe_server
 
-    bucket_tfe
         
-    user >> ec2_tfe_server
+    user >> ApplicationGateway >> ec2_tfe_server
      
     ec2_tfe_server >> [postgresql,
-                       bucket_tfe, 
-                       bucket_files]
+                       bucket_tfe]
 
 diag
