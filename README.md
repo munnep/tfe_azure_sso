@@ -58,7 +58,6 @@ cd tfe_aws_agents
       - [] install TFE
 - [] Create a valid certificate to use 
 - [] point dns name to public ip address
-- [] create an auto scaling group with agents
 - [] install TFE
 
 # DONE
