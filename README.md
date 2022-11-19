@@ -30,7 +30,7 @@ The repo assumes you have no certificates and want to create them using Let's En
 
 - Clone the repository to your local machine
 ```sh
-git clone https://github.com/munnep/tfe_aws_agents.git
+git clone https://github.com/munnep/tfe_azure_sso.git
 ```
 - Go to the directory  
 ```sh
